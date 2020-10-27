@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="public/assets/ico/icofont/icofont.min.css">
+  <title>Video Overlay</title>
+</head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: 0;
+  }
+  /* .video {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  } */
+  .container-fixed {
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  .container {
+    color: #fff;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "header header header"
+    "content-left content-mid content-right";
+  }
+
+  @media (max-width: 930px) {
+    .container {
+      display: grid;
+      grid-template-rows: 1fr auto auto auto;
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+      "header"
+      "content-left"
+      "content-mid"
+      "content-right";
+    }
+  }
+
+  .header {
+    margin-bottom: 36px;
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 160px;
+  }
+  
+  .content-left {
+    grid-area: content-left;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+  
+  .content-mid {
+    grid-area: content-mid;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .content-mid .up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-mid .down {
+    display: flex;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content-right {
+    grid-area: content-right;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  i {
+    font-size: 5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: #00ffc6;
+  }
+
+  .invert {
+    transform: rotateY(180deg);
+  }
+
+  .flex {
+    display: flex;
+  }
+
+</style>
+<body>
+  <!-- <video class="video" autoplay muted loop id="myVideo">
+    <source src="public/assets/img/00-bkg-arion.png" type="video/mp4">
+  </video> -->
+  <div class="container-fixed">
+    <div class="container">
+
+      <div class="header">
+        <h1>HOW TO BUY AND SELL ARION COIN</h1>
+      </div>
+
+      <div class="content-left">
+        <a href="https://github.com/arioncoin/arioncoin/releases" target="_blank"><div class="circle">
+          <!-- <i class="icofont-download-alt invert"></i> -->
+          <img src="public/assets/img/10-download.png" alt="">
+        </div></a>
+        
+        <div class="flex">
+          <h1>Download the wallet <a href="https://github.com/arioncoin/arioncoin/releases" target="_blank">HERE</a></h1>
+          <!-- <i class="icofont-arrow-right arrow"></i> -->
+        </div>
+        <p>This allows you to securely store your <br>ARION Coins on your desktop or<br> server. Always encrypt your wallet. If <br>you need a VPS <a href="https://www.time4vps.com/" target="_blank">click here</a></p>
+      </div>
+
+      <div class="content-mid">
+        <div class="up">
+          <div class="circle">
+            <!-- <i class="icofont-paper-plane"></i> -->
+            <img src="public/assets/img/11-send.png" alt="">
+          </div>
+          <div class="flex">
+            <h1>Send ARION to your wallet</h1>
+            <!-- <i class="icofont-arrow-right arrow"></i> -->
+          </div>
+          <p>Once you have downloaded and<br> synced your wallet you can start<br> staking your rewards. Keep your<br> keys secure and always ensure<br> you make backups</p>
+        </div>
+        <div class="down">
+          <div class="circle">
+            <!-- <i class="icofont-key invert"></i> -->
+            <img src="public/assets/img/13-private.png" alt="">
+          </div>
+          <h1>PrivateSend and InstantSend</h1>
+          <p>Send private encrypted messages from one wallet to another</p>
+        </div>
+        
+      </div>
+
+      <div class="content-right">
+        <div class="circle">
+          <!-- <i class="icofont-retweet"></i> -->
+          <img src="public/assets/img/12-send-receive.png" alt="">
+        </div>
+        <div class="flex">
+          <h1>Send/Receive with the wallet</h1>
+        </div>
+        <p>The process to send ARION Coins is<br> simple. All you need is the recipient<br> ARION Coin address and then<br> specify the amount you want to send.<br> After confirming the amount and<br> address, Click Send</p>
+      </div>
+    
+  </div>
+</div>
+</body>
+</html>
