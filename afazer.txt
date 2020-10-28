@@ -1,0 +1,3 @@
+corrigir a responsividade da página faq e partners.
+
+refazer a página get-arion-app.html

@@ -160,7 +160,8 @@ header {
   z-index         : -10;
   margin-left     : auto;
   margin-right    : auto;
-  background-color: var(--primary);
+  // background-color: var(--primary);
+  background-color: #282828;
 }
 
 .content-1 video {
@@ -171,7 +172,7 @@ header {
 }
 
 .content-2 {
-  padding-top    : 200px;
+  padding-top    : 120px;
   min-height     : 100vh;
   height         : 100%;
   display        : flex;
@@ -222,6 +223,7 @@ article {
 /* content 3 */
 .content-3 {
   display           : flex;
+  padding-top: 120px;
   flex-direction    : column;
   align-items       : center;
   height            : 100vh;
@@ -248,7 +250,7 @@ article {
   width          : 100%;
   margin-left    : auto;
   margin-right   : auto;
-  min-height     : 100vh;
+  height     : 100vh;
   display        : flex;
   flex-direction : column;
   justify-content: start;
@@ -281,7 +283,7 @@ article {
 }
 
 .content-5 {
-  padding-top   : 200px;
+  padding-top   : 120px;
   width         : 100%;
   min-height    : 100vh;
   display       : flex;
@@ -298,12 +300,14 @@ article {
 
 .team-title h2 {
   font-size: var(--title);
+  text-align: center;
 }
 
 .team-title h3 {
   font-size  : var(--subtitle);
   color      : var(--primary);
-  font-weight: lighter;
+  font-weight: 300;
+  text-align: center;
 }
 
 .team-container {
@@ -314,6 +318,15 @@ article {
   align-items    : center;
 }
 
+.team-container img {
+  height: 160px;
+  width: 160px;
+}
+
+.team-container .card-center img {
+  height: 320px;
+  width: 320px;
+}
 
 .team-container .card-left {
   margin-left    : 40px;
@@ -371,7 +384,7 @@ img {
   width       : 100%;
   margin-left : auto;
   margin-right: auto;
-  height      : 1200px;
+  height      : 1400px;
 }
 
 .content-6 iframe {
@@ -385,15 +398,26 @@ footer {
   justify-content: flex-start;
   align-items    : center;
   text-align     : center;
-  padding-top    : 200px;
+  padding-top    : 140px;
   height         : 100vh;
   color          : #fff;
 }
 
 footer .social-media {
+  z-index: 999;
   display        : flex;
   justify-content: center;
   align-items    : center;
+}
+
+.social-media img:hover {
+
+  /* CÓDIGO PARA CHAMAR A ANIMAÇÃO */
+  -webkit-animation: rodaroda 1s linear alternate 3;
+  -moz-animation   : rodaroda 1.0s linear infinite;
+  -ms-animation    : rodaroda 1.0s linear infinite;
+  -o-animation     : rodaroda 1.0s linear infinite;
+  animation        : rodaroda .8s linear infinite;
 }
 
 footer .social-media a {
@@ -443,7 +467,7 @@ footer p {
   display            : flex;
   flex-direction     : column;
   text-align         : center;
-  padding            : 140px 60px 40px 60px;
+  padding            : 140px 30px 40px 30px;
   background-repeat  : no-repeat;
   background-size    : cover;
   background-position: center;
@@ -559,16 +583,16 @@ h2 {
 @media (max-width: 720px) {
 
   .content-1-mobile {
-    margin-top: 100px;
+    margin-top: 50px;
     display: block;
   }
 
   .content-1-mobile video {
     width: 100%;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
   }
-
 
   .content-1 {
     display: none;
@@ -580,20 +604,21 @@ h2 {
 
   header {
     display: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    height: 50px;
   }
 
   .navbar {
     display: none;
   }
 
-  .footer {
-    display: none;
-  }
-
   .header-mobile {
+    z-index: 999;
     display         : block;
-    min-height      : 100px;
-    background-color: #282828;
+    // min-height      : 100px;
+    // background-color: #282828;
   }
 
   /* Style the navigation menu */
@@ -601,6 +626,7 @@ h2 {
     overflow        : hidden;
     background-color: #282828;
     position        : relative;
+    width: 100%;
   }
 
   /* Hide the links inside the navigation menu (except for logo/home) */
@@ -638,22 +664,37 @@ h2 {
     color           : white;
   }
 
-  //   .navbar-mobile {
-  //     z-index: 999;
-  //       display        : flex;
-  //       justify-content: space-between;
-  //       align-items    : center;
-  //       padding        : 16px;
-  //       max-height: 50vh;
-  //   }
+  footer h2 {
+    font-size  : 26px;
+    font-weight: 400;
+  }
+  
+  footer h3 {
+    font-size    : 34px;
+    color        : var(--primary);
+    font-weight  : 300;
+    margin-bottom: 30px;
+  }
+  
+  footer p {
+    font-size: 26px;
+    padding  : 16px;
+  }
 
-  //   .navbar-mobile .panel {
-  //       display        : flex;
-  //       flex-direction : column;
-  //       justify-content: center;
-  //       align-items    : center;
-  //   }
+  .content-3 {
+    height: 50vh;
+  }
 
+  .content-4 {
+    height: 50vh;
+  }
+
+  .content-6 {
+    width       : 100%;
+    margin-left : auto;
+    margin-right: auto;
+    height      : 1800px;
+  }
 }
 
 /* KEY FRAMES PARA FAZER OS GIROS */

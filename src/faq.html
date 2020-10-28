@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="background: url('public/assets/img/16-faq-bkg.png') no-repeat center center fixed; background-size: cover;" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,17 +9,34 @@
     <link rel="stylesheet" href="public/assets/ico/icofont/icofont.min.css">
 </head>
 <body class="animate-in">
-    <div class="container-grid-faq">
-        <!-- <div class="back-parallax">
-            <img src="public/assets/arion-faq-bkg.png" alt="">
-        </div> -->
+    <div class="container-grid-faq"></div>
         <header class="header-mobile">
-            <nav class="navbar-mobile">
-                <a href="#"><img class="logo" src="public/assets/img/01-logo-titulo.png" alt="logo"></a>
-                <i class="icofont-navigation-menu"></i>
-            </nav>
+            <!-- Top Navigation Menu -->
+            <div class="topnav">
+                <a href="index.html" class="active-mobile">Arion</a>
+                <!-- Navigation links (hidden by default) -->
+                <div id="myLinks">
+                    <a href="index.html#content-2">About</a>
+                    <a href="index.html#content-3">Coin Specs</a>
+                    <a href="index.html#content-4">Mini Roadmap</a>
+                    <a href="index.html#content-5">The Team</a>
+                    <a href="index.html#footer">Social Media</a>
+                    <a href="partners.html">Partners</a>
+                    <!-- <a href="#">FAQ</a> -->
+                    <a href="index.html#content-6">Get Arion</a>
+                        <a href="get-arion-app.html">Get Arion App</a>
+                        <a href="https://github.com/arioncoin/arioncoin/releases" target="blank">Get Wallet</a>
+                        <a href="uploads/arion-woocommerce-payment-gateway.zip" download>Get Plugin <i
+                                class="icofont-download"></i></a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="icofont-navigation-menu"></i>
+                </a>
+                <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            </div>
 
         </header>
+
         <header class="header" id="header">
             <nav class="navbar">
                 <div class="dropdown">
@@ -119,9 +136,18 @@
         </main>
         <a class="page-topo" id="page-topo" href="#"><i class="icofont-arrow-up icofont-2x"></i></span></a>
 
-    </div>
-    <!-- <script src="public/js/header-transition.js" type="text/javascript"></script>
-    <script src="public/js/accordion.js" type="text/javascript"></script> -->
+    <!-- </div> -->
+    <script>
+
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
     <script src="public/js/app.min.js" type="text/javascript"></script>
 </body>
 
