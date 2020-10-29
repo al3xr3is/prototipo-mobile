@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  @keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -400%;
+  }
+  98% {
+    left: -400%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+body {
+  max-width: 37.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent; /* thumb and track color */
+  scrollbar-width: 0px;
+  border: transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+aside {
+  display: none;
+}
+
+.carousel {
+  position: relative;
+  padding-top: 100%;
+  height: 500px;
+  filter: drop-shadow(0 0 10px #0003);
+  perspective: 100px;
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  background-color: transparent;
+  counter-increment: item;
+}
+
+
+.carousel__slide img {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  margin-bottom: 16px;
+}
+
+.carousel__slide .team-description {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #fff; */
+}
+
+.carousel__slide .team-description h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.carousel__slide:nth-child(even) {
+  background-color: transparent;
+}
+
+.carousel__slide:before {
+  display: none;
+  content: counter(item);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-40%,70px);
+  color: #fff;
+  font-size: 2em;
+}
+
+.carousel__snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
+
+.carousel__snapper {
+    animation-name: tonext, snap;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  .carousel__slide:last-child .carousel__snapper {
+    animation-name: tostart, snap;
+  } 
+
+@media (hover: hover) {
+  .carousel__snapper {
+    animation-name: tonext, snap;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+  }
+
+  .carousel__slide:last-child .carousel__snapper {
+    animation-name: tostart, snap;
+  } 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__snapper {
+    animation-name: none;
+  }
+}
+
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  animation-name: none;
+}
+
+.carousel__navigation {
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  bottom: 20%;
+  left: 0;
+  text-align: center;
+}
+
+.carousel__navigation-list,
+.carousel__navigation-item {
+  display: inline-block;
+}
+
+.carousel__navigation-button {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 12px;
+  background-color: transparent;
+  background-clip: content-box;
+  border: 0.15rem solid #fff;
+  border-radius: 50%;
+  font-size: 0;
+  transition: transform 0.1s;
+}
+
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 0;
+  margin-top: 37.5%;
+  width: 4rem;
+  height: 4rem;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  font-size: 0;
+  outline: 0;
+}
+
+.carousel::before,
+.carousel__prev {
+  left: -1rem;
+}
+
+.carousel::after,
+.carousel__next {
+  right: -1rem;
+}
+
+.carousel::before,
+.carousel::after {
+  content: '';
+  z-index: 1;
+  background-color: #333 transparent;
+  background-size: 1rem 1rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.carousel::after {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+}
+
+.team-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 24px;
+}
+
+.team-title h2, h3 {
+  font-size: 24px;
+  color: #fff;
+  font-family: 'Montserrat';
+  font-weight: 400;
+  margin: 0;
+}
+
+.team-title h3 {
+  color: #00ffc6;
+}
+</style>
+<body>
+  <div class="team-title">
+    <h2>TEAM</h2>
+    <h3>Ours Collaborators</h3>
+</div>
+  <section class="carousel" aria-label="Gallery">
+    <ol class="carousel__viewport">
+      <li id="carousel__slide1"
+          tabindex="0"
+          class="carousel__slide">
+          <div class="team-description">
+          <img src="public/assets/img/32-team-nikki-JimmySoap.png" alt="">
+            <h3>Nikita & JimmySoap</h3>
+            <h3>Project Leaders</h3>
+          </div>
+        <div class="carousel__snapper">
+          <a href="#carousel__slide5"
+             class="carousel__prev">Go to last slide</a>
+          <a href="#carousel__slide2"
+             class="carousel__next">Go to next slide</a>
+        </div>
+      </li>
+      <li id="carousel__slide2"
+          tabindex="0"
+          class="carousel__slide">
+          <div class="team-description">
+          <img src="public/assets/img/34-team-cryptocordz.png" alt="">
+          <h3>CryptoCoderz</h3>
+          <h3>Blockchain Developer</h3>
+          </div>
+        <div class="carousel__snapper"></div>
+          <a href="#carousel__slide1"
+             class="carousel__prev">Go to previous slide</a>
+          <a href="#carousel__slide3"
+             class="carousel__next">Go to next slide</a>
+      </li>
+      <li id="carousel__slide3"
+          tabindex="0"
+          class="carousel__slide">
+          <div class="team-description">
+          <img src="public/assets/img/35-team-remapper.png" alt="">
+          <h3>Remapper</h3>
+          <h3>Wallet Developer</h3>
+          </div>
+        <div class="carousel__snapper"></div>
+        <a href="#carousel__slide2"
+           class="carousel__prev">Go to previous slide</a>
+        <a href="#carousel__slide4"
+           class="carousel__next">Go to next slide</a>
+      </li>
+      <li id="carousel__slide4"
+          tabindex="0"
+          class="carousel__slide">
+          <div class="team-description">
+          <img src="public/assets/img/36-team-zoras.png" alt="">
+          <h3>Zoras</h3>
+          <h3>Designer Lead</h3>
+          </div>
+        <div class="carousel__snapper"></div>
+        <a href="#carousel__slide3"
+           class="carousel__prev">Go to previous slide</a>
+        <a href="#carousel__slide5"
+           class="carousel__next">Go to next slide</a>
+      </li>
+      <li id="carousel__slide5"
+          tabindex="0"
+          class="carousel__slide">
+          <div class="team-description">
+          <img src="public/assets/img/33-team-Alex.png" alt="">
+          <h3>Al3x R3is</h3>
+          <h3>Web Developer</h3>
+          </div>
+        <div class="carousel__snapper"></div>
+        <a href="#carousel__slide4"
+           class="carousel__prev">Go to previous slide</a>
+        <a href="#carousel__slide1"
+           class="carousel__next">Go to first slide</a>
+      </li>
+    </ol>
+    <aside class="carousel__navigation">
+      <ol class="carousel__navigation-list">
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide1"
+             class="carousel__navigation-button">Go to slide 1</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide2"
+             class="carousel__navigation-button">Go to slide 2</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide3"
+             class="carousel__navigation-button">Go to slide 3</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide4"
+             class="carousel__navigation-button">Go to slide 4</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide5"
+             class="carousel__navigation-button">Go to slide 5</a>
+        </li>
+      </ol>
+    </aside>
+  </section>
+</body>
+</html>
